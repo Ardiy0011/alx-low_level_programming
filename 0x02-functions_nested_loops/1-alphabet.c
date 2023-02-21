@@ -1,11 +1,16 @@
 #include "main.h"
 /**
- * printalphabet - Enter point
- * Description: alpahbet
+ * print_alphabet - Entry point
+ * Description: a function that prints alphabet in lowecase
  */
-void print_alphabet() {
-    for (char c = 'a'; c <= 'z'; c++) {
-        putchar(c);
-    }
-        putchar('\n');
+void print_alphabet(void)
+{
+	char letter = 'a';
+
+	while (letter <= 'z')
+	{
+		_putchar(letter);
+		letter++;
+	}
+	_putchar('\n');
 }
