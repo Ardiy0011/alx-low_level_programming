@@ -4,14 +4,14 @@
  * Description: prints the uppercase alphabet
  */
 int _isalpha(int c) {
-if (c >= 'a' && c <= 'z') {
+if (c >= 'a' && c <= 'z');
 return 1;  // c is a lowercase letter
 } else if (c >= 'A' && c <= 'Z') {
 return 1;  // c is an uppercase letter
 } else {
 return 0;  // c is not a letter
 }
-}
+
 
 int main() {
     char test_char1 = 'g';
