@@ -5,19 +5,19 @@
  */
 void print_alphabet_x10(void)
 {
-    char c = 'a';
-    int i = 0;
+char c = 'a';
+int i = 0;
     
-    while (i < 10)
-    {
-        _putchar(c);
-        c++;
+while (i < 10)
+{
+_putchar(c);
+c++;
 
-        if (c > 'z')
-        {
-            _putchar('\n');
-            c = 'a';
-            i++;
-        }
-    }
+if (c > 'z')
+{
+_putchar('\n');
+c = 'a';
+i++;
+}
+}
 }
