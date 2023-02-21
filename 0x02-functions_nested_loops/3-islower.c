@@ -1,19 +1,13 @@
 #include "main.h"
-
+/**
+ * printloweralphabet - Enter point
+ * Description: prints the lower cass alphabet
+ */
 int _islower(int c) {
-    if (c >= 'a' && c <= 'z') {
-        return 1;  // c is a lowercase letter
+if (c >= 'a' && c <= 'z') {
+    return 1;  
     } else {
-        return 0;  // c is not a lowercase letter
-    }
-}
+        return 0;
+        }
+        }
 
-int main() {
-    char test_char = 'g';
-    if (_islower(test_char)) {
-        printf("%c is a lowercase letter\n", test_char);
-    } else {
-        printf("%c is not a lowercase letter\n", test_char);
-    }
-    return 0;
-}
