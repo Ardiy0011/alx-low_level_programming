@@ -3,14 +3,10 @@
  * print_alphabet - Entry point
  * Description: a function that prints alphabet in lowecase
  */
-void print_alphabet(void)
-{
-	char letter = 'a';
-
-	while (letter <= 'z')
-	{
-		_putchar(letter);
-		letter++;
-	}
-	_putchar('\n');
+void print_alphabet() {
+    char c = 'a';
+    while (c <= 'z') {
+        putchar(c++);
+    }
+    putchar('\n');
 }
