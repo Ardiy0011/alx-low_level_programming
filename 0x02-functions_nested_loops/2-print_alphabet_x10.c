@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * print_alphabet10x - Enter point
- * Description: prints alphabet10x
+ * print_alphabet_x10 - Enter point
+ * Description: a function that prints alphabet10x
  */
 void print_alphabet_x10(void)
 {

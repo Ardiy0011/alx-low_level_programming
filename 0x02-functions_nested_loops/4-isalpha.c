@@ -1,5 +1,8 @@
 #include "main.h"
-
+/**
+ * _isalpha - Enter point
+ * Description: prints the lower cass alphabet
+ */
 int _isalpha(int c) {
     if (c >= 'a' && c <= 'z') {
         return 1;  // c is a lowercase letter

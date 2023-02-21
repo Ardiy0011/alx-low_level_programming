@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * printloweralphabet - Enter point
+ * _islower - Enter point
  * Description: prints the lower cass alphabet
  */
 int _islower(int c) {
