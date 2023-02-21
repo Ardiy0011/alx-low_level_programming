@@ -4,7 +4,6 @@
  * Description: prints 'main\n'
  * Return: Always 0 (success)
  */
- 
 int main(void)
 {
 char str[] = "_putchar\n";
