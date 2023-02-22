@@ -1,5 +1,9 @@
 #include "main.h"
-
+/**
+ * jack_bauer - prints every minute of the day
+ * Description: prints every minute of the day
+ * Return: void
+ */
 void jack_bauer(void);
 
 int main()
@@ -16,8 +20,8 @@ putchar((hour / 10) + '0');   // print tens digit of hour
 putchar((hour % 10) + '0');   // print ones digit of hour
 putchar(':');
 putchar((minute / 10) + '0'); // print tens digit of minute
-            putchar((minute % 10) + '0'); // print ones digit of minute
-            putchar('\n');               // print newline character
-        }
-    }
+putchar((minute % 10) + '0'); // print ones digit of minute
+putchar('\n');               // print newline character
+}
+}
 }
