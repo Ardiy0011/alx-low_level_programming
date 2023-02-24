@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/**
+ * main - Fizz Buzz code
+ *
+ * Return: void
+ */
+ 
 int main()
 {
 int a;
