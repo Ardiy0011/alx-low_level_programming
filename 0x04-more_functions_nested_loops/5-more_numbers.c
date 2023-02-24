@@ -2,7 +2,7 @@
 
 /**
  * print_numbers - print  0 - 9
- * skip 2 and 4
+ * Description: prints
  * Return: void
  */
 

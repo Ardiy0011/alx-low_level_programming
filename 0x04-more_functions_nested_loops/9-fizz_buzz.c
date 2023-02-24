@@ -1,12 +1,10 @@
 #include <stdio.h>
-
 /**
  * main - Fizz Buzz code
- *
+ * Description: prints
  * Return: void
  */
- 
-int main()
+int main(void)
 {
 int a;
 

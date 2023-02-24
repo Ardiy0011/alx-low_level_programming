@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * print_numbers - print  0 - 9
- * skip 2 and 4
+ * print_most_numbers - prints 0 - 9 and skips 2, 3
+ * Description: prints
  * Return: void
  */
 
