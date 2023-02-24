@@ -2,31 +2,39 @@
 
 /**
  * main - Fizz Buzz code
- * Description
+ *
  * Return: void
  */
 
 int main(void)
 {
-int a = 1;
-for (a = 1; a <= 100; a++)
-{
-if (a % 3 == 0 && a % 5 == 0)
-{
-printf("FizzBuzz\n");
-}
-else if (a % 3 == 0)
-{
-printf("Fizz\n");
-}
-else if (a % 5 == 0)
-{
-printf("Buzz\n");
-}
-else
-{
-printf("%d\n", a);
-}
-}
-return (0);
+	int i = 1;
+
+	while (i <= 100)
+	{
+		if (i % 3 == 0 && i % 5 == 0)
+		{
+			printf("FizzBuzz");
+		}
+		else if (i % 3 == 0)
+		{
+			printf("Fizz");
+		}
+		else if (i % 5 == 0)
+		{
+			printf("Buzz");
+		}
+		else
+		{
+			printf("%i", i);
+		}
+		if (i != 100)
+		{
+			putchar(' ');
+		}
+
+		i++;
+	}
+	putchar('\n');
+	return (0);
 }
