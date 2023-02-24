@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#include <stdio.h>
-
 /**
  * main - Fizz Buzz code
  * Description
@@ -10,7 +8,7 @@
 
 int main(void)
 {
-int a;
+int a = 1;
 for (a = 1; a <= 100; a++)
 {
 if (a % 3 == 0 && a % 5 == 0)
