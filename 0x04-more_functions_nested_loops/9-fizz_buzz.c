@@ -1,14 +1,16 @@
 #include <stdio.h>
 
+#include <stdio.h>
+
 /**
  * main - Fizz Buzz code
- * Description: prints
+ * Description
  * Return: void
  */
+
 int main(void)
 {
 int a;
-
 for (a = 1; a <= 100; a++)
 {
 if (a % 3 == 0 && a % 5 == 0)
