@@ -1,22 +1,30 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_numbers - print  0 - 9
- * Description: prints
+ * more_numbers - prints 0 - 14
+ *
  * Return: void
  */
 
 void more_numbers(void)
 {
-char a;
+	char n, c;
+	int i = 0;
 
-for (int i = 1; i <= 3; i++)
-{
+	while (i < 10)
+	{
+		for (n = 0; n <= 14; n++)
+		{
+			c = n;
+			if (n > 9)
+			{
+				_putchar('1');
+				c = n % 10;
+			}
+			_putchar('0' + c);
+		}
 
-for (a = 0; a <= 14; a++)
-{
-_putchar(a + '0');
-}
-_putchar('\n');
-}
+		_putchar('\n');
+		i++;
+	}
 }
