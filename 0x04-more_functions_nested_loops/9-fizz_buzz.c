@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * main - Fizz Buzz code
  * Description: prints
