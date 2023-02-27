@@ -6,18 +6,20 @@
  * main - generates random passwords for 101-crackme
  * Return: zero
  */
+
 int main(void)
 {
-	int sum;
-	char c;
+int sum = 0;
+char c;
+    
+srand(time(NULL));
+for (; sum <= 2645;)
+{
+c = rand() % 128;
+sum += c;
+putchar(c);
+}
 
-	srand(time(NULL));
-	while (sum <= 2645)
-	{
-		c = rand() % 128;
-		sum += c;
-		putchar(c);
-	}
-	putchar(2772 - sum);
-	return (0);
+putchar(2772 - sum);
+return 0;
 }
