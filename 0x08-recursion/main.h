@@ -13,3 +13,4 @@ int prime(int n, int i);
 int actual_sqrt_recursion(int n, int i);
 void iterate_wild(char **wildstr);
 char *postfix_match(char *str, char *postfix);
+int _putchar(char c);
