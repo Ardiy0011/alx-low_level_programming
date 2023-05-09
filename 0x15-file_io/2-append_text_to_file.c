@@ -18,7 +18,7 @@ return (-1);
 
 if (text_content != NULL)
 {
-for(len = 0; text_content[len] != '\0'; len++);
+    for (len = 0; text_content[len] != '\0'; len++);
 }
 switch (rd = open(filename, O_WRONLY | O_APPEND))
 {
