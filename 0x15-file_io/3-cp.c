@@ -12,7 +12,7 @@ char *buffer;
 buffer = malloc(sizeof(char) * BUFSIZE);
 if (buffer == NULL)
 {
-printf( "Error: Can't write to %s\n", file);
+printf("Error: Can't write to %s\n", file);
 exit(99);
 }
 return (buffer);
@@ -26,7 +26,7 @@ return (buffer);
  */
 void close_file(int fd)
 {
-int c; 
+int c;
 c = close(fd);
 switch (c)
 {

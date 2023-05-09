@@ -31,7 +31,7 @@ exit(98);
 
 /**
  * print_magic - this funct prints the magic number of an ELF header.
- * @header: point to an Elf64_Ehdr structure.
+ * @e_ident: points to an array containing the ELF class.
  */
 void print_magic(unsigned char *e_ident)
 {
@@ -192,16 +192,17 @@ e_ident[EI_ABIVERSION]);
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 int i = 0;
-if (e_ident[EI_DATA] == ELFDATA2MSB) {
+if (e_ident[EI_DATA] == ELFDATA2MSB)
+{
 e_type >>= 8;
 }
-
 printf("  Type:                              ");
 
 struct {
 int value;
-char* name;
-} types[] = {
+char *name;
+} types[] =
+{
 {ET_NONE, "NONE (None)"},
 {ET_REL, "REL (Relocatable file)"},
 {ET_EXEC, "EXEC (Executable file)"},
@@ -209,14 +210,14 @@ char* name;
 {ET_CORE, "CORE (Core file)"},
 };
 
-while (i < sizeof(types)/sizeof(types[0])) {
+while (i < sizeof(types) / sizeof(types[0]))
+{
 if (e_type == types[i].value) {
 printf("%s\n", types[i].name);
 return;
 }
 i++;
 }
-
 printf("<unknown: %x>\n", e_type);
 }
 
@@ -229,7 +230,8 @@ printf("<unknown: %x>\n", e_type);
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
 printf("  Entry point address:               ");
-if (e_ident[EI_DATA] == ELFDATA2MSB) {
+if (e_ident[EI_DATA] == ELFDATA2MSB)
+{
 unsigned char *p = (unsigned char *)&e_entry;
 unsigned char *end = p + sizeof(unsigned long int);
 while (p < end) {
@@ -238,12 +240,14 @@ unsigned char tmp = *p;
 *(end - 1) = tmp;
 }}
 
-if (e_ident[EI_CLASS] == ELFCLASS32) {
+if (e_ident[EI_CLASS] == ELFCLASS32)
+{
 printf("%#x\n", (unsigned int)e_entry);
-} else {
+}
+else
+{
 printf("%#lx\n", e_entry);
-}
-}
+}}
 
 
 /**
