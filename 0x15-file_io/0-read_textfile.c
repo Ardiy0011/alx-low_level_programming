@@ -12,26 +12,20 @@ ssize_t a;
 ssize_t rd;
 ssize_t wrt;
 char *buff;
-
 if (filename == NULL)
 return (0);
-
 buff = malloc(sizeof(char) * letters);
 if (buff == NULL)
 return (0);
-
 rd = open(filename, O_RDONLY);
 a = read(rd, buff, letters);
 wrt = write(STDOUT_FILENO, buff, rd);
-
 if (a == -1 || rd == -1 || wrt == -1 || wrt < a)
 {
 free(buff);
 return (0);
 }
-
 free(buff);
 close(rd);
-
 return (wrt);
 }
