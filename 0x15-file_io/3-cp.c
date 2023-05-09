@@ -43,16 +43,11 @@ break;
 * @argc: The number of arguments passed to the program.
 * @argv: An array of pointers to the arguments.
 * Return: 0 if successful
-* else if it doesnt exist or
-* cannot be read, exit w/ error 98. if it be created or
-* written onto exit w/ 99 ,cannot be closed.
-* else ultimately exit w/ erro  100
 */
 int main(int argc, char *argv[])
 {
 int from, to, r, w;
 char *buffer;
-
 switch (argc)
 {
 case 1:
@@ -67,10 +62,8 @@ default:
 printf("Error: Too many arguments\n");
 exit(97);
 }
-
 buffer = create_buffer(argv[2]);
 from = open(argv[1], O_RDONLY);
-
 switch (from)
 {
 case -1:
@@ -80,9 +73,7 @@ exit(98);
 default:
 break;
 }
-
 to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-
 switch (to)
 {
 case -1:
@@ -92,13 +83,10 @@ exit(99);
 default:
 break;
 }
-
 r = read(from, buffer, BUFSIZE);
-
 while (r > 0)
 {
 w = write(to, buffer, r);
-
 switch (w)
 {
 case -1:
@@ -108,14 +96,10 @@ exit(99);
 default:
 break;
 }
-
 r = read(from, buffer, BUFSIZE);
 }
-
 free(buffer);
-
 close_file(from);
 close_file(to);
-
 return (0);
 }
