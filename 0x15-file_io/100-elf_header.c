@@ -204,7 +204,7 @@ printf("  Type:                              ");
 * Each element is a struct containing an integer value and its
 * corresponding name as a string.
 */
-struct rd
+struct header
 {
 int value;
 char *name;
