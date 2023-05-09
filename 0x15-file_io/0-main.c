@@ -2,8 +2,8 @@
 
 /**
 * main - an entry point
-* @ac: The number of arguments supplied to the program.
-* @av: An [] of pointers to the arguments.
+ *@ac: number of arguments passed to the program
+ *@av: array of strings representing the arguments
 * Return: Always 0.
 */
 int main(int ac, char **av)
