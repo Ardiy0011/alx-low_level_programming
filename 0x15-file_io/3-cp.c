@@ -12,7 +12,7 @@ char *buffer;
 buffer = malloc(sizeof(char) * BUFSIZE);
 if (buffer == NULL)
 {
-printf("Error: Can't write to %s\n", file);
+dprintf(STDERR_FILENO,"Error: Can't write to %s\n", file);
 exit(99);
 }
 return (buffer);
@@ -31,7 +31,7 @@ c = close(fd);
 switch (c)
 {
 case -1:
-printf("Error: Can't close fd %d\n", fd);
+dprintf(STDERR_FILENO,"Error: Can't close fd %d\n", fd);
 exit(100);
 default:
 break;
@@ -51,15 +51,15 @@ char *buffer;
 switch (argc)
 {
 case 1:
-printf("Usage: cp file_from file_to\n");
+dprintf(STDERR_FILENO,"Usage: cp file_from file_to\n");
 exit(97);
 case 2:
-printf("Error: Missing destination file operand after '%s'\n", argv[1]);
+dprintf(STDERR_FILENO,"Error: Missing destination file operand after '%s'\n", argv[1]);
 exit(98);
 case 3:
 break;
 default:
-printf("Error: Too many arguments\n");
+dprintf(STDERR_FILENO,"Error: Too many arguments\n");
 exit(97);
 }
 buffer = create_buffer(argv[2]);
@@ -67,7 +67,7 @@ from = open(argv[1], O_RDONLY);
 switch (from)
 {
 case -1:
-printf("Error: Can't read from file %s\n", argv[1]);
+dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", argv[1]);
 free(buffer);
 exit(98);
 default:
@@ -77,7 +77,7 @@ to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 switch (to)
 {
 case -1:
-printf("Error: Can't write to %s\n", argv[2]);
+dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]);
 free(buffer);
 exit(99);
 default:
@@ -90,7 +90,7 @@ w = write(to, buffer, r);
 switch (w)
 {
 case -1:
-printf("Error: Can't write to %s\n", argv[2]);
+dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]);
 free(buffer);
 exit(99);
 default:
