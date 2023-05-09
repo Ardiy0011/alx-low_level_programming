@@ -1,0 +1,1 @@
+this contains tasks onpointers, strings, arrays and variables
