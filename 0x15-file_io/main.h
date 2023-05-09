@@ -9,11 +9,7 @@
 #include <stdlib.h>
 #include <elf.h>
 
-typedef struct {
-  unsigned char e_ident[EI_NIDENT];
-} Elf64_Ehdr;
 
-Elf64_Ehdr header;
 
 
 
