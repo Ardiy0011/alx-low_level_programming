@@ -11,32 +11,33 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 int rd, wrt;
-int len;
-len = 0;
+int len = 0;
+
 if (filename == NULL)
 return (-1);
 
 if (text_content != NULL)
 {
-    for (len = 0; text_content[len] != '\0'; len++);
+for (len = 0; text_content[len] != '\0'; len++);
 }
+
 switch (rd = open(filename, O_WRONLY | O_APPEND))
 {
 case -1:
 return (-1);
-
 default:
 break;
 }
+
 switch (wrt = write(rd, text_content, len))
 {
 case -1:
 close(rd);
 return (-1);
-
 default:
 break;
 }
+
 close(rd);
 return (1);
 }
