@@ -198,10 +198,19 @@ e_type >>= 8;
 }
 printf("  Type:                              ");
 
-struct {
+/**
+
+* struct definition for types array, used to store the possible
+* types of ELF files.
+* Each element is a struct containing an integer value and its
+* corresponding name as a string.
+*/
+struct
+{
 int value;
 char *name;
-} types[] =
+}
+types[] =
 {
 {ET_NONE, "NONE (None)"},
 {ET_REL, "REL (Relocatable file)"},
@@ -212,7 +221,8 @@ char *name;
 
 while (i < sizeof(types) / sizeof(types[0]))
 {
-if (e_type == types[i].value) {
+if (e_type == types[i].value)
+{
 printf("%s\n", types[i].name);
 return;
 }
@@ -234,7 +244,8 @@ if (e_ident[EI_DATA] == ELFDATA2MSB)
 {
 unsigned char *p = (unsigned char *)&e_entry;
 unsigned char *end = p + sizeof(unsigned long int);
-while (p < end) {
+while (p < end)
+{
 unsigned char tmp = *p;
 *p++ = *(end - 1);
 *(end - 1) = tmp;
