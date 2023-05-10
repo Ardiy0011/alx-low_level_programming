@@ -38,10 +38,10 @@ return (ret);
 }
 
 /**
-* append_text_to_file - appends text to a file
-* @filename: name of the file to append text to
-* @text_content: string to append to the file
-* Return: 1 on success, -1 on failure
+ * append_text_to_file - this funct appends text to a file
+ * @filename: name of the file to append text to
+ * @text_content: string to append to the file
+ * Return: 1 on success, -1 on failure
 */
 int append_text_to_file(const char *filename, char *text_content)
 {

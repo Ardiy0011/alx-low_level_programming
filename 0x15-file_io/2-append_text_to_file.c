@@ -16,12 +16,11 @@ int len = 0;
 if (filename == NULL)
 return (-1);
 
-if (text_content != NULL)
-{
-for (len = 0; text_content[len] != '\0'; len++)
-;
-}
+if (text_content == NULL)
+		return (1);
 
+	for (len = 0; text_content[len] != '\0'; len++)
+		;
 switch (rd = open(filename, O_WRONLY | O_APPEND))
 {
 case -1:

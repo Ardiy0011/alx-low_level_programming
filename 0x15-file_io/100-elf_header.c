@@ -199,10 +199,10 @@ e_type >>= 8;
 printf("  Type:                              ");
 
 /**
-* struct definition for types array, used to store the possible
-* types of ELF files.
-* Each element is a struct containing an integer value and its
-* corresponding name as a string.
+ * struct - definition for types array, used to store the possible
+ * types of ELF files.
+ * Each element is a struct containing an integer value and its
+ * corresponding name as a string.
 */
 struct
 {
