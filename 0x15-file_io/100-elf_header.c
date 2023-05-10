@@ -210,7 +210,7 @@ struct
 int value;
 char *name;
 }
-types[] ={
+types[] = {
 {ET_NONE, "NONE (None)"},
 {ET_REL, "REL (Relocatable file)"},
 {ET_EXEC, "EXEC (Executable file)"},
