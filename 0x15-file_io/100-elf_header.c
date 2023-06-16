@@ -35,9 +35,10 @@ exit(98);
  */
 void print_magic(unsigned char *e_ident)
 {
+int i;
 printf("ELF Header:\n");
 printf("  Magic:   ");
-for (int i = 0; i < EI_NIDENT; i++)
+for (i = 0; i < EI_NIDENT; i++)
 printf("%02x%c", e_ident[i], i < EI_NIDENT - 1 ? ' ' : '\n');
 }
 
@@ -196,7 +197,6 @@ if (e_ident[EI_DATA] == ELFDATA2MSB)
 {
 e_type >>= 8;
 }
-printf("  Type:                              ");
 
 /**
  * struct - definition for types array, used to store the possible
@@ -209,7 +209,7 @@ struct
 int value;
 char *name;
 }
-types[] ={
+types[] = {
 {ET_NONE, "NONE (None)"},
 {ET_REL, "REL (Relocatable file)"},
 {ET_EXEC, "EXEC (Executable file)"},
