@@ -1,42 +1,38 @@
 #include "lists.h"
 
 /**
- * delete_dtempint_at_index - Delete temp at nth index
+ * delete_dnodeint_at_index - Delete node at nth index
+ * @head: Pointer to a pointer to the head node
+ * @index: Index of the node to delete
  *
- * @head: Head of temp
- *
- * @index: index
- *
- * Return: 1 succeed, -1 if fail
+ * Return: 1 if successful, -1 if failed
  */
-
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	if (*head == NULL)
 		return (-1);
-	dlistint_t *temp = *head;
-	unsigned int count;
+	dlistint_t *current = *head;
 
 	if (index == 0)
 	{
-		*head = temp->next;
-		if (temp->next != NULL)
-			temp->next->prev = NULL;
-		free(temp);
+		*head = current->next;
+		if (current->next != NULL)
+			current->next->prev = NULL;
+		free(current);
 		return (1);
 	}
 
-	for (count = 0; temp != NULL && count < index - 1; count++)
-		temp = temp->next;
+	unsigned int count;
+	for (count = 0; current != NULL && count < index - 1; count++)
+		current = current->next;
 
-	if (temp == NULL || temp->next == NULL)
+	if (current == NULL || current->next == NULL)
 		return (-1);
 
-	dlistint_t *node_to_delete = temp->next;
-	temp->next = node_to_delete->next;
+	dlistint_t *node_to_delete = current->next;
+	current->next = node_to_delete->next;
 	if (node_to_delete->next != NULL)
-		node_to_delete->next->prev = temp;
+		node_to_delete->next->prev = current;
 	free(node_to_delete);
-
 	return (1);
 }
