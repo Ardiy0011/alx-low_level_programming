@@ -1,59 +1,44 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <time.h>
+#include <stdlib.h>
 
 /**
- * main - Entry point
- * @argc: Number of command-line arguments
- * @argv: Array of command-line arguments
- *
- * Return: 0 on success, 1 on failure
+ * main - generate a key using  crackme5
+ * @argc: number of arguments to pass
+ * @argv: arguments passed to main
+ * Return: 0 on success, 1 on error
  */
 int main(int argc, char *argv[])
 {
+	unsigned int i, b;
+	size_t length, sum;
+	char *l = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char p[7] = "      ";
+
 	if (argc != 2)
 	{
 		printf("Correct usage: ./keygen5 username\n");
 		return (1);
 	}
-
-	unsigned int i, b;
-	size_t len = strlen(argv[1]);
-	char *l = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
-	char p[7] = "      ";
-
-	p[0] = l[(len ^ 59) & 63];
-
-	unsigned int add = 0;
-	for (i = 0; i < len; i++)
-		add += argv[1][i];
-	p[1] = l[(add ^ 79) & 63];
-
-	unsigned int multiply = 1;
-	for (i = 0; i < len; i++)
-		multiply *= argv[1][i];
-	p[2] = l[(multiply ^ 85) & 63];
-
-	char max_char = argv[1][0];
-	for (i = 0; i < len; i++)
-	{
-		if (argv[1][i] >= max_char)
-			max_char = argv[1][i];
-	}
-	srand(max_char ^ 14);
+	length = strlength(argv[1]);
+	p[0] = l[(length ^ 59) & 63];
+	for (i = 0, sum = 0; i < length; i++)
+		sum += argv[1][i];
+	p[1] = l[(sum ^ 79) & 63];
+	for (i = 0, b = 1; i < length; i++)
+		b *= argv[1][i];
+	p[2] = l[(b ^ 85) & 63];
+	for (b = argv[1][0], i = 0; i < length; i++)
+		if ((char)b <= argv[1][i])
+			b = argv[1][i];
+	srand(b ^ 14);
 	p[3] = l[rand() & 63];
-
-	unsigned int sum_of_squares = 0;
-	for (i = 0; i < len; i++)
-		sum_of_squares += argv[1][i] * argv[1][i];
-	p[4] = l[(sum_of_squares ^ 239) & 63];
-
-	unsigned int rand_val = 0;
-	for (i = 0; i < argv[1][0]; i++)
-		rand_val = rand();
-	p[5] = l[(rand_val ^ 229) & 63];
-
+	for (b = 0, i = 0; i < length; i++)
+		b += argv[1][i] * argv[1][i];
+	p[4] = l[(b ^ 239) & 63];
+	for (b = 0, i = 0; (char)i < argv[1][0]; i++)
+		b = rand();
+	p[5] = l[(b ^ 229) & 63];
 	printf("%s\n", p);
 	return (0);
 }
