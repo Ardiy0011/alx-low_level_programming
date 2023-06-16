@@ -197,6 +197,7 @@ if (e_ident[EI_DATA] == ELFDATA2MSB)
 {
 e_type >>= 8;
 }
+printf("  Type:                              ");
 
 /**
  * struct - definition for types array, used to store the possible
