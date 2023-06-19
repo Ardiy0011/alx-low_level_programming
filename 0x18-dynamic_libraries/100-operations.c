@@ -1,72 +1,59 @@
-#include <stdio.h>
-
 /**
- * add - provides the sum of two numbers
- * @a: The left number
- * @b: The right number
-
- * Return: Result
- *       */
-int add(int a, int b)
-{
-    return (a + b);
-}
-
-/**
- * add - provides the subtraction of two numbers
- * @a: The left number
- * @b: The right number
+ * add - Computes the sum of two numbers
+ * @left: The left-sided number
+ * @right: The right-sided number
  * 
  * Return: Result
  *       */
-int sub(int a, int b)
+int add(int left, int right)
 {
-    return (a - b);
+		return (left + right);
 }
 
 /**
- * add - provides the multiplication of two numbers
- * @a: The left number
- * @b: The right number
- * 
+ * sub - Computes the difference of two numbers
+ * @left: The left-sided number
+ * @right: The right-sided number
+ *
  * Return: Result
- *       */
-int mul(int a, int b)
+ */
+int sub(int left, int right)
 {
-    return (a * b);
+		return (left - right);
 }
 
 /**
- * add - provides the division of two numbers
- * @a: The left number
- * @b: The right number
+ * mul - Computes the product of two numbers
+ * @left: The left-sided number
+ * @right: The right-sided number
  * 
  * Return: Result
- *       */
-int div(int a, int b)
+ */
+int mul(int left, int right)
 {
-    if (b == 0)
-    {
-        printf("Error: Division by zero is not allowed.\n");
-        return (0);
-    }
-    return (a / b);
+		return (left * right);
 }
 
+/**
+ * div - Computes the quotient of two numbers
+ * @left: The left-sided number
+ * @right: The right-sided number
+ *
+ * Return: Result
+ */
+int div(int left, int right)
+{
+		return (left / right);
+}
 
 /**
- * add - provides the remainder of a number
- * @a: The left number
- * @b: The right number
+ * mod - Computes the modulo of two numbers
+ * @left: The left-sided number
+ * @right: The right-sided number
  * 
  * Return: Result
- *       */
-int mod(int a, int b)
+ */
+int mod(int left, int right)
 {
-    if (b == 0)
-    {
-        printf("Error: Division by zero is not allowed.\n");
-        return (0);
-    }
-    return (a % b);
+		return (left % right);
 }
