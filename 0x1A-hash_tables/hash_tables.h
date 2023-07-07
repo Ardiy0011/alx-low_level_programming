@@ -32,4 +32,21 @@ typedef struct hash_table_s
 } hash_table_t;
 
 
+/**
+ * struct hash_table_s - defines the creation of teh linked list for collision
+ *
+ * @item: pointer to the hashtable items
+ * @next: pointer to thenext node
+ **/
+
+typedef struct LinkedList
+{
+     hash_node_t *item;
+     struct LinkedList *next;
+     LinkedList **overflow_buckets;
+} LinkedList;
+
 hash_table_t *hash_table_create(unsigned long int size);
+unsigned long int hash_djb2(const unsigned char *str);
+unsigned long int key_index(const unsigned char *key, unsigned long int size);
+int hash_table_set(hash_table_t *ht, const char *key, const char *value);
