@@ -2,8 +2,9 @@
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-    // Create a new item
+
     hash_node_t *item = (hash_node_t *)malloc(sizeof(hash_node_t));
+    
     item->key = (char *)malloc(strlen(key) + 1);
     item->value = (char *)malloc(strlen(value) + 1);
     strcpy(item->key, key);
