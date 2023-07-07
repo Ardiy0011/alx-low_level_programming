@@ -1,88 +1,56 @@
 #include "hash_tables.h"
-
+/**
+ * hash_table_set - adds an element to the hash table
+ * @ht: pointer to the hash table
+ * @key: key to be added
+ * @value: value attached to key
+ *
+ * Return: 1 on success
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
+	unsigned long int index = hash_function(key) % ht->size;
 
-    hash_node_t *item = (hash_node_t *)malloc(sizeof(hash_node_t));
-    
-    item->key = (char *)malloc(strlen(key) + 1);
-    item->value = (char *)malloc(strlen(value) + 1);
-    strcpy(item->key, key);
-    strcpy(item->value, value);
-
-    // Compute the index
-    unsigned long int index = hash_function(key) % ht->size;
-
-    // Check if there is a collision
-    if (ht->array[index] == !NULL)
-    {
-        create_LL__and_handle_collision(ht, index, item);
-    }
-
-    return (1);
+	hash_node_t *item = (hash_node_t *)malloc(sizeof(hash_node_t));
+	if (item == NULL)
+		return (0);
+	item->key = (char *)malloc(strlen(key) + 1);
+	if (item->key == NULL)
+	{
+		free(item);
+		return (0);
+	}
+	item->value = (char *)malloc(strlen(value) + 1);
+	if (item->value == NULL)
+	{
+		free(item->key);
+		free(item);
+		return (0);
+	}
+	strcpy(item->key, key);
+	strcpy(item->value, value);
+	if (ht->array[index] != NULL)
+	{
+		create_LL_and_handle_collision(ht, index, item);
+	}
+	else
+	{
+		ht->array[index] = item;
+	}
+	return (1);
 }
 
 
-
-
-
-// Function to add node at the beginning of the list(SAVE SOMEWHERE ELSE NOT PART OF TEH QUESTION REQUIREMNTS)
-void create_LL_and_handle_collision(hash_table_t *table, unsigned long index, hash_node_t *item)
+/**
+ * main - check the code
+ *
+ * Return: Always EXIT_SUCCESS.
+ */
+int main(void)
 {
-    LinkedList *head = table->overflow_buckets[index];
+    hash_table_t *ht;
 
-    if (head == NULL)
-    {
-        // Creates the list.
-        head = allocate_list();
-        head->item = item;
-        head->next = NULL;
-        table->overflow_buckets[index] = head;
-    }
-    else
-    {
-        // Insert to the list.
-        table->overflow_buckets[index] = linkedlist_insert(head, item);
-    }
-}
-
-LinkedList* allocate_list()
-{
-    // Allocates memory for a LinkedList pointer.
-    LinkedList* list = (LinkedList*) malloc(sizeof(LinkedList));
-    return list;
-}
-
-LinkedList* linkedlist_insert(LinkedList* list, Ht_item* item)
-{
-    // Inserts the item onto the LinkedList.
-    if (list == NULL)
-    {
-        LinkedList* head = allocate_list();
-        head->item = item;
-        head->next = NULL;
-        list = head;
-        return list;
-    }
-    else if (list->next == NULL)
-    {
-        LinkedList* node = allocate_list();
-        node->item = item;
-        node->next = NULL;
-        list->next = node;
-        return list;
-    }
-
-    LinkedList* temp = list;
-
-    while (temp->next->next != NULL)
-    {
-        temp = temp->next;
-    }
-
-    LinkedList* node = allocate_list();
-    node->item = item;
-    node->next = NULL;
-    temp->next = node;
-    return list;
+    ht = hash_table_create(1024);
+    hash_table_set(ht, "betty", "cool");
+    return (EXIT_SUCCESS);
 }
