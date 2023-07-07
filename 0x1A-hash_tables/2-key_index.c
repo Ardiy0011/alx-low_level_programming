@@ -3,7 +3,8 @@
 /**
  * key_index - takes the returned hash value fom has_djb2
  * and computes corresponding slot using division hashing
- * @str: string used to generate hash value
+ * @key: pointer to value
+ * @size: size or hashtable
  * Return: hash value
  */
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
