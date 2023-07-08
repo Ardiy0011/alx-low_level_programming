@@ -1,12 +1,12 @@
 #include "hash_tables.h"
 #include "linked.h"
 /**
- * hash_table_set - adds an element to the hash table
- * @ht: pointer to the hash table
- * @key: key to be added
- * @value: value attached to key
+ * hash_table_set - Adds an element to the hash table.
+ * @ht: Pointer to the hash table.
+ * @key: Key to be added.
+ * @value: Value attached to the key.
  *
- * Return: 1 on success
+ * Return: 1 on success, 0 on failure.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
@@ -40,14 +40,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	strcpy(slot_pt->key, key);
 	strcpy(slot_pt->value, value);
 	if (ht->array[index] != NULL)
-    /*if the index of hash table isnt empty or has something run function that creates linked list*/
 	{
+		/* If the index of the hash table is not empty, run function that creates a linked list */
 		create_LL_and_handle_collision(ht, index, slot_pt);
 	}
 	else
 	{
 		ht->array[index] = slot_pt;
-        /*else place the value in the index of the hash table*/
+		/* Else, place the value in the index of the hash table */
 	}
 	return (1);
 }
