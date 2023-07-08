@@ -1,93 +1,87 @@
 #include "hash_tables.h"
 #include "linked.h"
 /**
- * hash_table_set - Adds an element to the hash table.
- * @ht: Pointer to the hash table.
- * @key: Key to be added.
- * @value: Value attached to the key.
+ * update_node_value - Update the value of a node with a given key.
+ * @node: Pointer to the node.
+ * @value: The new value to be assigned.
+ */
+void update_node_value(hash_node_t *node, const char *value)
+{
+    free(node->value);
+    node->value = strdup(value);
+}
+
+/**
+ * create_new_node - Create a new node with the given key and value.
+ * @key: The key to be assigned.
+ * @value: The value to be assigned.
  *
- * Return: 1 on success, 0 on failure.
+ * Return: Pointer to the newly created node, or NULL on failure.
+ */
+hash_node_t *create_new_node(const char *key, const char *value)
+{
+    hash_node_t *new_node = malloc(sizeof(hash_node_t));
+    if (new_node == NULL)
+        return (NULL);
+
+    new_node->key = strdup(key);
+    if (new_node->key == NULL)
+    {
+        free(new_node);
+        return (NULL);
+    }
+
+    new_node->value = strdup(value);
+    if (new_node->value == NULL)
+    {
+        free(new_node->key);
+        free(new_node);
+        return (NULL);
+    }
+
+    new_node->next = NULL;
+
+    return (new_node);
+}
+
+
+/**
+ * hash_table_set - Add or update an element in a hash table.
+ * @ht: A pointer to the hash table.
+ * @key: The key to add - cannot be an empty string.
+ * @value: The value associated with the key.
+ *
+ * Return: Upon failure - 0.
+ *         Otherwise - 1.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	size_t key_len = strlen(key), i;
-	hash_node_t *slot_pt;
-	unsigned long int index;
-	unsigned char *u_key = malloc((key_len + 1) * sizeof(unsigned char));
+    unsigned long int index;
+    hash_node_t *current;
+    hash_node_t *new_node;
 
-	if (u_key == NULL)
-		return (0);
-	for (i = 0; i <= key_len; i++)
-		u_key[i] = (unsigned char)key[i];
-	index = key_index(u_key, ht->size);/*based on the formula done in index function we call the index function here and compute a key*/
-	slot_pt = (hash_node_t *)malloc(sizeof(hash_node_t));
-	if (slot_pt == NULL)
-		return (0);
-	slot_pt->key = (char *)malloc(strlen(key) + 1);
-	if (slot_pt->key == NULL)
+    if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
+    return (0);
+
+    index = key_index((const unsigned char *)key, ht->size);
+    current = ht->array[index];
+
+    while (current != NULL)
+    {
+        if (strcmp(current->key, key) == 0)
 	{
-		free(slot_pt);
-		return (0);
-	}
-	slot_pt->value = (char *)malloc(strlen(value) + 1);
-	if (slot_pt->value == NULL)
-	{
-	free(slot_pt->key);
-	free(slot_pt->value);
-	free(slot_pt);
-	return (0);
-	}
-	strcpy(slot_pt->key, key);
-	strcpy(slot_pt->value, value);
-	if (ht->array[index] != NULL)/*if ther is an already existing value in the index of the array*/
-	{
-/* If index of  hash table isnt empty, function creates linked list */
-		collision_h(ht, index, slot_pt);
-	}
-	else
-	{
-		ht->array[index] = slot_pt;
-/* Else, place the value in the index of the hash table */
-	}
-	return (1);
-}
+            update_node_value(current, value);
+            return (1);
+        }
+        current = current->next;
+    }
 
-/**
- * allocate_list - Allocates memory for a new LinkedList.
- * Return: Pointer to the newly allocated LinkedList.
- */
-LinkedList *allocate_list()
-{
-	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+    new_node = create_new_node(key, value);
+    if (new_node == NULL)
+        return (0);
 
-	if (list == NULL)
-	return (NULL);
+    new_node->next = ht->array[index];
+    ht->array[index] = new_node;
 
-	list->item = NULL;
-	list->next = NULL;
-	return (list);
-}
-
-/**
- * collision_h - If collision, create linked list.
- * @ht: Pointer to the hash table.
- * @index: Index of the collision.
- * @item: New node to be added to the linked list.
- */
-void collision_h(hash_table_t *ht, unsigned long index, hash_node_t *item)
-{
-	LinkedList *new_node = allocate_list();
-
-	if (new_node == NULL)
-	{
-		free(item->key);
-		free(item->value);
-		free(item);
-		return;
-	}
-
-	new_node->item = item;
-	new_node->next = (LinkedList *)ht->array[index];
-
-	ht->array[index] = (hash_node_t *)new_node;
+    return (1);
 }
