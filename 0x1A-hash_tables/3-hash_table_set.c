@@ -16,7 +16,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned char *unsigned_key = malloc((key_len + 1) * sizeof(unsigned char));
 
 	if (unsigned_key == NULL)
-		return 0;
+		return (0);
 	for (i = 0; i <= key_len; i++)
 		unsigned_key[i] = (unsigned char)key[i];
 	index = key_index(unsigned_key, ht->size);
@@ -62,7 +62,7 @@ LinkedList *allocate_list()
 {
     LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
     if (list == NULL) {
-        return NULL;
+        return (NULL);
     }
     list->item = NULL;
     list->next = NULL;
