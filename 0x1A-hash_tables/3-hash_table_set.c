@@ -23,6 +23,7 @@ void update_node_value(hash_node_t *node, const char *value)
 hash_node_t *create_new_node(const char *key, const char *value)
 {
 	hash_node_t *new_node = malloc(sizeof(hash_node_t));
+
 	if (new_node == NULL)
 	return (NULL);
 
