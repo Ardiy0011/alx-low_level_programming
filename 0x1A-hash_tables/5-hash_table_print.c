@@ -1,21 +1,30 @@
 #include "hash_tables.h"
 #include "linked.h"
+
 /**
- * hash_table_get - Retrieves the value  in the hash table.
- * @ht: table to print
+ * hash_table_print - Prints the key-value pairs in the hash table.
+ * @ht: Pointer to the hash table.
  */
 void hash_table_print(const hash_table_t *ht)
 {
-unsigned long int i;
-printf("\nHash Table\n-------------------\n");
+	unsigned long int i;
+	int count = 0;
+	int printed = 0;
 
-for (i = 0; i < ht->size; i++)
-{
-if (ht->array[i])
-{
-printf("Index: %lu, Key: %s, Value: %s\n", i, ht->array[i]->key, ht->array[i]->value);
-}
-}
+	printf("{");
 
-printf("-------------------\n\n");
+	for (i = 0; i < ht->size; i++)
+	{
+		while (ht->array[i] != NULL)
+		{
+			if (count > 0 && printed > 0)
+				printf(", ");
+			printf("'%s : %s', ", ht->array[i]->key, ht->array[i]->value);
+			ht->array[i] = ht->array[i]->next;
+			count++;
+			printed++;
+		}
+	}
+
+	printf("}\n");
 }

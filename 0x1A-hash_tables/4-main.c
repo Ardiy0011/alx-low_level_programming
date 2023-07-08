@@ -14,38 +14,30 @@ int main(void)
     char *value;
 
     ht = hash_table_create(1024);
+    hash_table_set(ht, "c", "fun");
     hash_table_set(ht, "python", "awesome");
-    hash_table_set(ht, "Bob", "and Alice");
-    hash_table_set(ht, "N", "printf");
+    hash_table_set(ht, "Bob", "and Kris love asm");
+    hash_table_set(ht, "N", "queens");
     hash_table_set(ht, "Asterix", "Obelix");
     hash_table_set(ht, "Betty", "Cool");
     hash_table_set(ht, "98", "Battery Street");
-    hash_table_set(ht, "c", "is fun");
-    hash_table_set(ht, "javascript", "web");
+    hash_table_set(ht, "c", "isfun");
 
     value = hash_table_get(ht, "python");
-    printf("Value for key 'python': %s\n", value);
-
+    printf("%s:%s\n", "python", value);
     value = hash_table_get(ht, "Bob");
-    printf("Value for key 'Bob': %s\n", value);
-
+    printf("%s:%s\n", "Bob", value);
     value = hash_table_get(ht, "N");
-    printf("Value for key 'N': %s\n", value);
-
+    printf("%s:%s\n", "N", value);
     value = hash_table_get(ht, "Asterix");
-    printf("Value for key 'Asterix': %s\n", value);
-
+    printf("%s:%s\n", "Asterix", value);
     value = hash_table_get(ht, "Betty");
-    printf("Value for key 'Betty': %s\n", value);
-
+    printf("%s:%s\n", "Betty", value);
     value = hash_table_get(ht, "98");
-    printf("Value for key '98': %s\n", value);
-
+    printf("%s:%s\n", "98", value);
     value = hash_table_get(ht, "c");
-    printf("Value for key 'c': %s\n", value);
-
+    printf("%s:%s\n", "c", value);
     value = hash_table_get(ht, "javascript");
-    printf("Value for key 'javascript': %s\n", value);
-
+    printf("%s:%s\n", "javascript", value);
     return (EXIT_SUCCESS);
 }
