@@ -13,13 +13,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	size_t key_len = strlen(key), i;
 	hash_node_t *slot_pt;
 	unsigned long int index;
-	unsigned char *unsigned_key = malloc((key_len + 1) * sizeof(unsigned char));
+	unsigned char *u_key = malloc((key_len + 1) * sizeof(unsigned char));
 
-	if (unsigned_key == NULL)
+	if (u_key == NULL)
 		return (0);
 	for (i = 0; i <= key_len; i++)
-		unsigned_key[i] = (unsigned char)key[i];
-	index = key_index(unsigned_key, ht->size);
+		u_key[i] = (unsigned char)key[i];
+	index = key_index(u_key, ht->size);
 	slot_pt = (hash_node_t *)malloc(sizeof(hash_node_t));
 	if (slot_pt == NULL)
 		return (0);
@@ -33,7 +33,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (slot_pt->value == NULL)
 	{
 		free(slot_pt->key);
-        free(slot_pt->value);
+        	free(slot_pt->value);
 		free(slot_pt);
 		return (0);
 	}
@@ -41,8 +41,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	strcpy(slot_pt->value, value);
 	if (ht->array[index] != NULL)
 	{
-		/* If the index of the hash table is not empty, run function that creates a linked list */
-		create_LL_and_handle_collision(ht, index, slot_pt);
+/* If index of  hash table isnt empty, function creates linked list */
+		collision_h(ht, index, slot_pt);
 	}
 	else
 	{
@@ -61,32 +61,35 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 LinkedList *allocate_list()
 {
     LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
-    if (list == NULL) {
-        return (NULL);
-    }
-    list->item = NULL;
-    list->next = NULL;
+
+	if (list == NULL)
+	return (NULL);
+	
+	list->item = NULL;
+	list->next = NULL;
     return (list);
 }
 
 /**
- * create_LL_and_handle_collision - If collision occurs, create a linked list to store excess.
+ * collision_h - If collision, create linked list.
  * @ht: Pointer to the hash table
  * @index: Index of the collision
  * @item: New node to be added to the linked list
  */
-void create_LL_and_handle_collision(hash_table_t *ht, unsigned long index, hash_node_t *item)
+void collision_h(hash_table_t *ht, unsigned long index, hash_node_t *item)
 {
     LinkedList *new_node = allocate_list();
-    if (new_node == NULL) {
+
+    if (new_node == NULL)
+    {
         free(item->key);
         free(item->value);
         free(item);
         return;
     }
 
-    new_node->item = item;
-    new_node->next = (LinkedList *)ht->array[index];
+	new_node->item = item;
+	new_node->next = (LinkedList *)ht->array[index];
 
     ht->array[index] = (hash_node_t *)new_node;
 }
