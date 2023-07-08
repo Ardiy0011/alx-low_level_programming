@@ -91,5 +91,5 @@ void collision_h(hash_table_t *ht, unsigned long index, hash_node_t *item)
 	new_node->item = item;
 	new_node->next = (LinkedList *)ht->array[index];
 
-    		ht->array[index] = (hash_node_t *)new_node;
+	ht->array[index] = (hash_node_t *)new_node;
 }
