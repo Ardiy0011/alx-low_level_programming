@@ -32,10 +32,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	slot_pt->value = (char *)malloc(strlen(value) + 1);
 	if (slot_pt->value == NULL)
 	{
-			free(slot_pt->key);
-			free(slot_pt->value);
-			free(slot_pt);
-			return (0);
+	free(slot_pt->key);
+	free(slot_pt->value);
+	free(slot_pt);
+	return (0);
 	}
 	strcpy(slot_pt->key, key);
 	strcpy(slot_pt->value, value);
