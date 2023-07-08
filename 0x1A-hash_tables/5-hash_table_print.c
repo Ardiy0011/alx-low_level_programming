@@ -1,6 +1,9 @@
 #include "hash_tables.h"
 #include "linked.h"
-
+/**
+ * hash_table_get - Retrieves the value  in the hash table.
+ * @ht: table to print
+ */
 void hash_table_print(const hash_table_t *ht)
 {
 unsigned long int i;
