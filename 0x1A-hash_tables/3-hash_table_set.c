@@ -60,14 +60,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
  */
 LinkedList *allocate_list()
 {
-   	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
 
 	if (list == NULL)
 	return (NULL);
 
 	list->item = NULL;
 	list->next = NULL;
-        return (list);
+	return (list);
 }
 
 /**
@@ -82,10 +82,10 @@ void collision_h(hash_table_t *ht, unsigned long index, hash_node_t *item)
 
 	if (new_node == NULL)
 	{
-		free(item->key);
-		free(item->value);
-		free(item);
-		return;
+	free(item->key);
+	free(item->value);
+	free(item);
+	return;
 	}
 
 	new_node->item = item;
