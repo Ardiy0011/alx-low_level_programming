@@ -67,7 +67,7 @@ LinkedList *allocate_list()
 	
 	list->item = NULL;
 	list->next = NULL;
-    return (list);
+        return (list);
 }
 
 /**
@@ -78,15 +78,15 @@ LinkedList *allocate_list()
  */
 void collision_h(hash_table_t *ht, unsigned long index, hash_node_t *item)
 {
-    LinkedList *new_node = allocate_list();
+	LinkedList *new_node = allocate_list();
 
-    if (new_node == NULL)
-    {
-        free(item->key);
-        free(item->value);
-        free(item);
-        return;
-    }
+	if (new_node == NULL)
+	{
+		free(item->key);
+		free(item->value);
+		free(item);
+		return;
+	}
 
 	new_node->item = item;
 	new_node->next = (LinkedList *)ht->array[index];
