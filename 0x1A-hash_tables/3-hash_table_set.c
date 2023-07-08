@@ -19,7 +19,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	for (i = 0; i <= key_len; i++)
 		u_key[i] = (unsigned char)key[i];
-	index = key_index(u_key, ht->size);
+	index = key_index(u_key, ht->size);/*based on the formula done in index function we call the index function here and compute a key*/
 	slot_pt = (hash_node_t *)malloc(sizeof(hash_node_t));
 	if (slot_pt == NULL)
 		return (0);
@@ -39,7 +39,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	strcpy(slot_pt->key, key);
 	strcpy(slot_pt->value, value);
-	if (ht->array[index] != NULL)
+	if (ht->array[index] != NULL)/*if ther is an already existing value in the index of the array*/
 	{
 /* If index of  hash table isnt empty, function creates linked list */
 		collision_h(ht, index, slot_pt);

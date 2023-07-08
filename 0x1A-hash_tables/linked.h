@@ -16,6 +16,7 @@ typedef struct LinkedList
 {
 	hash_node_t *item;
 	struct LinkedList *next;
+
 } LinkedList;
 
 #endif /*LINKED_H*/
