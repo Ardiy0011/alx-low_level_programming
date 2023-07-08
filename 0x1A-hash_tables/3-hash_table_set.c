@@ -20,29 +20,29 @@ void update_node_value(hash_node_t *node, const char *value)
  */
 hash_node_t *create_new_node(const char *key, const char *value)
 {
-    hash_node_t *new_node = malloc(sizeof(hash_node_t));
-    if (new_node == NULL)
-        return (NULL);
+	hash_node_t *new_node = malloc(sizeof(hash_node_t));
+	if (new_node == NULL)
+	return (NULL);
 
-    new_node->key = strdup(key);
-    if (new_node->key == NULL)
-    {
-        free(new_node);
-        return (NULL);
-    }
+	new_node->key = strdup(key);
+	if (new_node->key == NULL)
+	{
+	free(new_node);
+	return (NULL);
+	}
 
-    new_node->value = strdup(value);
-    if (new_node->value == NULL)
-    {
-        free(new_node->key);
-        free(new_node);
-        return (NULL);
-    }
+	new_node->value = strdup(value);
+	if (new_node->value == NULL)
+	{
+	free(new_node->key);
+	free(new_node);
+	return (NULL);
+	}
 
-    new_node->next = NULL;
+	new_node->next = NULL;
 
-    return (new_node);
-}
+	return (new_node);
+	}
 
 
 /**
