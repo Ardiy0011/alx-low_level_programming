@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "hash_tables.h"
-
 /**
  * struct LinkedList - defines the creation of teh linked list for collision
  *
@@ -19,4 +18,6 @@ typedef struct LinkedList
 
 } LinkedList;
 
+
+char *hash_table_get(const hash_table_t *ht, const char *key);
 #endif /*LINKED_H*/

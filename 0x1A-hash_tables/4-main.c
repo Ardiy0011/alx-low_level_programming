@@ -1,8 +1,6 @@
 #include "hash_tables.h"
 #include "linked.h"
 
-char *hash_table_get(const hash_table_t *ht, const char *key);
-
 /**
  * main - check the code
  *
