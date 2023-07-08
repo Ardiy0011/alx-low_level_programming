@@ -47,15 +47,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		ht->array[index] = slot_pt;
-		/* Else, place the value in the index of the hash table */
+/* Else, place the value in the index of the hash table */
 	}
 	return (1);
 }
 
-
 /**
  * allocate_list - Allocates memory for a new LinkedList.
- *
  * Return: Pointer to the newly allocated LinkedList.
  */
 LinkedList *allocate_list()
@@ -72,9 +70,9 @@ LinkedList *allocate_list()
 
 /**
  * collision_h - If collision, create linked list.
- * @ht: Pointer to the hash table
- * @index: Index of the collision
- * @item: New node to be added to the linked list
+ * @ht: Pointer to the hash table.
+ * @index: Index of the collision.
+ * @item: New node to be added to the linked list.
  */
 void collision_h(hash_table_t *ht, unsigned long index, hash_node_t *item)
 {
@@ -82,10 +80,10 @@ void collision_h(hash_table_t *ht, unsigned long index, hash_node_t *item)
 
 	if (new_node == NULL)
 	{
-	free(item->key);
-	free(item->value);
-	free(item);
-	return;
+		free(item->key);
+		free(item->value);
+		free(item);
+		return;
 	}
 
 	new_node->item = item;
