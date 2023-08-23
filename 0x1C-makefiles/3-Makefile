@@ -18,16 +18,16 @@ $(NAME) : $(OBJ)
 # clean object files created
 clean :
 	$(RM) $(NAME)
-	find . -name "*#*" -delete
-	find . -name "*~" -delete
+	@rm -f *#
+	@rm -f *~
 
 oclean:
 	$(RM) $(OBJ)
 
 fclean:
 	$(RM) $(NAME)
-	find . -name "*#*" -delete
-	find . -name "*~" -delete
+	@rm -f *#
+	@rm -f *~
 	$(RM) $(OBJ)
 
 re:
