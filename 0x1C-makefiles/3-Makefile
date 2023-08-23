@@ -31,4 +31,4 @@ fclean:
 	$(RM) $(OBJ)
 
 re:
-	touch *.c
+	fclean all
