@@ -17,18 +17,17 @@ $(NAME) : $(OBJ)
 	$(CC) -c $< -o $@
 # clean object files created
 clean :
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 	@$(RM) *#
-	@$(RM) *~
+	$(RM) *~ $(NAME)
 
 oclean:
 	$(RM) $(OBJ)
 
 fclean:
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 	@$(RM) *#
-	@$(RM) *~
+	$(RM) *~ $(NAME)
 	$(RM) $(OBJ)
 
-re:
-	fclean all
+re: fclean all
