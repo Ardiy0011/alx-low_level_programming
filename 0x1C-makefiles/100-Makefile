@@ -1,0 +1,35 @@
+# Macros for compiling
+CC = gcc
+SRC = main.c school.c
+# anything from the SRC with a .c ext rename to object(.o) ext
+OBJ = $(SRC:.c=.o)
+NAME = school
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+all: $(NAME)
+
+$(NAME) : $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+%.o: %.c m.h
+    $(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	@$(RM) $(NAME)
+	@$(RM) *#
+	$(RM) *~ $(NAME)
+
+oclean:
+    	@$(RM) $(NAME)
+        @$(RM) *#
+        $(RM) *~ $(NAME)
+
+fclean:
+	@$(RM) $(NAME)
+	@$(RM) *#
+	$(RM) *~ $(NAME)
+	$(RM) $(OBJ)
+
+re: fclean all
+
+.PHONY: all clean oclean fclean re
