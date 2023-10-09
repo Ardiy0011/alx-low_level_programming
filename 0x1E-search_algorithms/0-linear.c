@@ -1,4 +1,4 @@
-#include "search.h"
+#include <stdio.h>
 /**
  * linear_search - runs linear search in an array of vals
  * @array: pointer to the array
