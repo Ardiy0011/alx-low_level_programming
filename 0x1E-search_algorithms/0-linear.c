@@ -1,4 +1,5 @@
 #include "search.h"
+
 /**
  * linear_search - finds value in an array with L/S
  * @array: pointer to input array
