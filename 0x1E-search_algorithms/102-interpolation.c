@@ -1,20 +1,19 @@
-#include "search_algos.h"
+#include "search.h"
 
 /**
- * interpolation_search - searches for a value in an array of
- * integers using the Interpolation search algorithm
+ * interpolation_search - Finds value in an array using j/s
  *
- * @array: input array
+ * @array: pointer to input array
  * @size: size of the array
  * @value: value to search in
- * Return: index of the number
+ * Return: index of the value
  */
 int interpolation_search(int *array, size_t size, int value)
 {
 	size_t pos, low, high;
 	double f;
 
-	if (array == NULL)
+	if (!array)
 		return (-1);
 
 	low = 0;

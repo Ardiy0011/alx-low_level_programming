@@ -1,10 +1,7 @@
-#include "search_algos.h"
+#include "search.h"
 
 /**
- * recursive_search - searches for a value in an array of
- * integers using the Binary search algorithm
- *
- *
+ * recursive_search - Finds value in an array using r/s
  * @array: input array
  * @size: size of the array
  * @value: value to search in

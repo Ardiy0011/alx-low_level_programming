@@ -1,14 +1,12 @@
-#include "search_algos.h"
-#include <math.h>
+#include "search.h"
 
 /**
- * jump_list - searches for a value in an array of
- * integers using the Jump search algorithm
+ * jump_list - Finds value in an array using j/l
  *
  * @list: input list
  * @size: size of the array
  * @value: value to search in
- * Return: index of the number
+ * Return: index of the value
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {

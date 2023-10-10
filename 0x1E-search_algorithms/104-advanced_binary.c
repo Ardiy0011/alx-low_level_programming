@@ -1,14 +1,13 @@
-#include "search_algos.h"
+#include "search.h"
 
 /**
- * rec_search - searches for a value in an array of
- * integers using the Binary search algorithm
+ * rec_search - Finds value in an array using rec/s
  *
  *
- * @array: input array
+ * @array: pointer to input array
  * @size: size of the array
  * @value: value to search in
- * Return: index of the number
+ * Return: index of the value
  */
 int rec_search(int *array, size_t size, int value)
 {

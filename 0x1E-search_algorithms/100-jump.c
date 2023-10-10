@@ -1,20 +1,17 @@
-#include "search_algos.h"
-#include <math.h>
+#include "search.h"
 
 /**
- * jump_search - searches for a value in an array of
- * integers using the Jump search algorithm
- *
+ * jump_search - Ffinds value in an array using j/s
  * @array: input array
  * @size: size of the array
  * @value: value to search in
- * Return: index of the number
+ * Return: index of the value
  */
 int jump_search(int *array, size_t size, int value)
 {
 	int index, m, k, prev;
 
-	if (array == NULL || size == 0)
+	if (!array || size == 0)
 		return (-1);
 
 	m = (int)sqrt((double)size);
