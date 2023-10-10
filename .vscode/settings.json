@@ -2,6 +2,11 @@
     "files.associations": {
         "main.h": "c",
         "shell.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "system_error": "c",
+        "array": "c",
+        "functional": "c",
+        "tuple": "c",
+        "utility": "c"
     }
 }
