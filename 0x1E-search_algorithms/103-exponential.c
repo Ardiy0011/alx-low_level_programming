@@ -1,52 +1,100 @@
 #include "search_algos.h"
 
 /**
- * binary_search - Binary search algorithm
- * @array: Pointer to the first element of the array
- * @left: Index of the left boundary
- * @right: Index of the right boundary
- * @value: Value to search for
- *
- * Return: Index of the found value or -1 if not found
+ * recursive_search - Finds value in an array using r/s
+ * @array: input array
+ * @size: size of the array
+ * @value: value to search in
+ * Return: index of the valuw
  */
-int binary_search(int *array, int left, int right, int value)
+int recursive_search(int *array, size_t size, int value)
 {
-  while (left <= right)
-  {
-    int mid = left + (right - left) / 2;
-    if (array[mid] == value)
-      return (mid);
-    if (array[mid] < value)
-      left = mid + 1;
-    else
-      right = mid - 1;
-  }
-  return (-1);
+	size_t half = size / 2;
+	size_t i;
+
+	if (!array || size == 0)
+		return (-1);
+
+	printf("Searching in array");
+
+	for (i = 0; i < size; i++)
+		printf("%s %d", (i == 0) ? ":" : ",", array[i]);
+
+	printf("\n");
+
+	if (half && size % 2 == 0)
+		half--;
+
+	if (value == array[half])
+		return ((int)half);
+
+	if (value < array[half])
+		return (recursive_search(array, half, value));
+
+	half++;
+
+	return (recursive_search(array + half, size - half, value) + half);
 }
 
 /**
- * exponential_search - Exponential search algorithm
- * @array: Pointer to the first element of the array
- * @size: Number of elements in array
- * @value: Value to search for
+ * binary_search - calls to binary_search to return
+ * the index of the number
  *
- * Return: Index of the found value or -1 if not found
+ * @array: input array
+ * @size: size of the array
+ * @value: value to search in
+ * Return: index of the value
+ */
+int binary_search(int *array, size_t size, int value)
+{
+	int idx;
+
+	idx = recursive_search(array, size, value);
+
+	if (idx >= 0 && array[idx] != value)
+		return (-1);
+
+	return (idx);
+}
+
+/**
+ * exponential_search - searches for a value in an array of
+ * integers using the Exponential search algorithm
+ *
+ * @array: input array
+ * @size: size of the array
+ * @value: value to search in
+ * Return: index of the number
  */
 int exponential_search(int *array, size_t size, int value)
 {
-  int i = 1;
+	size_t index, next;
+	int result;
 
-  if (!array || size <= 0)
-    return (-1);
+	if (array == NULL)
+		return (-1);
 
-  if (array[0] == value)
-    return (0);
+	if (array[0] == value)
+		return (0);
 
-  while (i < size && array[i] <= value)
-    i *= 2;
+	index = 1;
 
-  int left = i / 2;
-  int right = (i < size) ? i : size - 1;
+	while (array[index] < value && index < size)
+	{
+		printf("Value checked array[%d] = [%d]\n", (int)index, array[index]);
+		index *= 2;
+	}
 
-  return (binary_search(array, left, right, value));
+	next = (index >= size) ? (size - 1) : index;
+
+	index /= 2;
+
+	printf("Value found between indexes [%d] and [%d]\n", (int)index, (int)next);
+
+	result = binary_search(array + index, (next + 1) - index, value);
+
+	if (result >= 0)
+		result += index;
+
+	return (result);
 }
