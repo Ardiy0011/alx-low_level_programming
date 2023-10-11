@@ -1,4 +1,4 @@
-#include "search.h"
+#include "search_algos.h"
 
 /**
  * recursive_search - finds val using r/s
